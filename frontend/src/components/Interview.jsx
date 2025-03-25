@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import QuestionCard from "./Questioncard.jsx"; 
 
@@ -7,6 +8,13 @@ const Interview = () => {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({}); // Store user responses
   const userId = localStorage.getItem("userId");
+=======
+import QuestionCard from "./QuestionCard"; // Import the new component
+
+const Interview = () => {
+  const [questions, setQuestions] = useState([]);
+  const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
+>>>>>>> 7e430656e00ae0fd5b5725b68995895d6b52d46b
 
   useEffect(() => {
     const startInterview = async () => {
@@ -20,6 +28,7 @@ const Interview = () => {
     startInterview();
   }, []);
 
+<<<<<<< HEAD
   const navigate = useNavigate();
 
   const handleFinishInterview = () => {
@@ -57,6 +66,22 @@ const Interview = () => {
         </button>
       </div>
     </>
+=======
+  return (
+    <div className="container mx-auto p-4">
+      <h2 className="font-semibold text-center text-3xl mb-4">Mock Interview</h2>
+      {questions.length === 0 ? (
+        <p className="text-center">Loading questions...</p>
+      ) : (
+        questions.map((question, index) => (
+          question && <div key={index} >
+          <QuestionCard question={question} index={index} userId={userId} />
+          </div>
+          
+        ))
+      )}
+    </div>
+>>>>>>> 7e430656e00ae0fd5b5725b68995895d6b52d46b
   );
 };
 
