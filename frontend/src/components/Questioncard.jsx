@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const QuestionCard = ({ question, index, userId }) => {
-  const [answer, setAnswer] = useState(""); 
+const QuestionCard = ({ question, index, userId, updateResponses }) => {
+  const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState("");
 
   const handleAnswerChange = (e) => {
@@ -23,23 +23,26 @@ const QuestionCard = ({ question, index, userId }) => {
       });
 
       setFeedback(response.data.feedback);
+
+      // Update responses in the parent component
+      updateResponses(index, answer);
     } catch (error) {
       console.error("Error submitting answer:", error.response?.data || error.message);
     }
   };
 
   return (
-    <div className="mb-6 p-4  shadow">
+    <div className="mb-6 p-4 shadow">
       <h4 className="text-lg font-semibold mb-2">{question}</h4>
       <input
         type="text"
         value={answer}
         onChange={handleAnswerChange}
         placeholder="Type your answer..."
-        className="w-full p-2 "
+        className="w-full p-2"
       />
       <button
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2"
         onClick={submitAnswer}
       >
         Submit
@@ -50,5 +53,3 @@ const QuestionCard = ({ question, index, userId }) => {
 };
 
 export default QuestionCard;
-
-

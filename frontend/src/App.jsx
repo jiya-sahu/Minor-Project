@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import Interview from "./components/Interview";
 import Home from "./pages/Home";
+import Feedback from './components/Feedback';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/interview" element={<Interview />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
       </div>
     </>

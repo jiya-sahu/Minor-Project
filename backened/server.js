@@ -13,4 +13,5 @@ const PORT = process.env.PORT||10000;
 
 app.use("/api/auth", authRoutes);
 app.use("/api/interview", interviewRoutes);
+app.use("/api/interview/feedback",interviewRoutes);
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
